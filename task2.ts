@@ -1,26 +1,37 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
 // Написать класс Stack
 
 class Stack<T> {
+  stack: T[] = [];
+  constructor(...items: T[]) {
+    this.stack = items;
+  }
   /** Добавляет элемент в стек */
-  push(item: T) {}
+  push(item: T) {
+    this.stack.push(item);
+  }
 
   /** Удаляет и возвращает верхний элемент */
-  pop() {}
+  pop() {
+    return this.stack.pop();
+  }
 
   /** Проверяет, пуст ли стек */
-  isEmpty() {}
+  isEmpty() {
+    return this.size === 0;
+  }
 
   /** Количество элементов в стеке */
   get size() {
-    return 0;
+    return this.stack.length;
   }
 
   /** Очищает стек */
-  clear() {}
+  clear() {
+    this.stack.length = 0;
+  }
 }
 
-const stack = new Stack<number>();
+const stack = new Stack<number>(6, 10, 23);
 
 stack.push(1);
 stack.push(2);
@@ -29,3 +40,4 @@ stack.push(3);
 console.log(stack.pop()); // 3
 console.log(stack.size); // 2
 console.log(stack.isEmpty()); // false
+console.log(stack.stack);
